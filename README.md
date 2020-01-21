@@ -3,18 +3,18 @@ A computer vision project for playing the game of Dobble automatically
 
 The project is explained in the [dissertation write-up](cm389-dissertation-paper.pdf) provided in the repo.
 
-The basic idea of the project is to automatically perform these steps:
+The basic idea of the project is to automatically detect cards within the video frame, crop them, then identify the 8 different symbols on each card. 
 
-![cards](assets/README%20images/cards_on_table.jpg | width=100)
+<img align="center" src="assets/README%20images/process.PNG" width="800" />
 
-![bounding boxes](assets/README%20images/cards_on_table_bbox.PNG | width=100) 
+The orignial card images were aquired from [Leo Reynolds on Flickr](https://www.flickr.com/photos/lwr/sets/72157660922894042/)
 
-![cropped card](assets/README%20images/single_card_crop.jpg | width=100) 
+The cards were then manually annotated using [labelImg](https://github.com/tzutalin/labelImg)
 
-Primarily uses openCV, pytorch and the fastai libraries. 
+The datasets are then [synthesised](card_dataset_creator.ipynb) using openCV with a collection of [background images](https://www.robots.ox.ac.uk/~vgg/data/dtd/).
 
-The dataset_creator files creates the datasets needed
+The [bounding box](card_bbox_predictor.ipynb) and [multiclass classifier](symbol_multilabel_classifier.ipynb) models are created using [fastai](https://github.com/fastai/fastai), a library built on top of pytorch.
 
-The card_bbox_predictor and symbol_multilabel_classifier files create the pytorch models.
+A [tkinter app](tkinter_app.py) loads the models and visualises predictions with a GUI.
 
-tkinter_app loads the models with a GUI.
+The system can run at over 20 frames per second, correctly identifying the matching symbols between cards around 90% of the time on real world examples.
