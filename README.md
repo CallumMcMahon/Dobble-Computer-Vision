@@ -5,7 +5,7 @@ The project is explained in the [dissertation write-up](cm389-dissertation-paper
 
 The basic idea of the project is to automatically perform these steps:
 
-![image](assets/README images/cards_on_table.jpg = 250x250)
+![image](assets/README images/cards_on_table.jpg)
 
 ![](assets/README images/cards_on_table_bbox.PNG | width=100) 
 
